@@ -89,3 +89,28 @@ nav a:active
     font-size: 95%;
     transition: 0.25s;
 }
+
+a.donate-btc
+{
+    background-color: #fa0;
+    color: #fff;
+    display: inline-block;
+    border-style: none;
+    border-radius: 1mm;
+    padding: 4mm;
+    transition: 0.25s;
+}
+
+a.donate-btc:hover
+{
+    background-color: #d90;
+    color: #fff;
+    transition: 0.25s;
+}
+
+a.donate-btc:active
+{
+    background-color: #b80;
+    color: #fff;
+    transition: 0.25s;
+}
