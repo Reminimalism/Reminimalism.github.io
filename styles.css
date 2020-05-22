@@ -66,21 +66,32 @@ nav
     background-color: #ddd;
     color: #000;
     text-align: center;
-    padding: 5mm;
 }
 
 nav a
 {
     color: #666;
     text-decoration: none;
+    display: inline-block;
+    border-bottom-style: solid;
+    border-bottom-width: 0mm;
     padding: 5mm;
     transition: 1s;
 }
 
+nav a.selected
+{
+    border-bottom-width: 1mm;
+    padding-bottom: 4mm;
+}
+
 nav a:hover
 {
+    background-color: #0001;
     color: #222;
     transition: 0.25s;
+    border-bottom-width: 2mm;
+    padding-bottom: 3mm;
 }
 
 nav a:active
