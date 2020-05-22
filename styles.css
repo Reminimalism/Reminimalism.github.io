@@ -100,9 +100,9 @@ nav a:active
     transition: 0.25s;
 }
 
-a.donate-btc
+a.button, a.donate-btc
 {
-    background-color: #fa0;
+    background-color: #666;
     color: #fff;
     display: inline-block;
     border-style: none;
@@ -111,16 +111,32 @@ a.donate-btc
     transition: 0.25s;
 }
 
+a.button:hover
+{
+    background-color: #222;
+    color: #fff;
+}
+
+a.button:active
+{
+    background-color: #000;
+    color: #fff;
+}
+
+a.donate-btc
+{
+    background-color: #fa0;
+    color: #fff;
+}
+
 a.donate-btc:hover
 {
     background-color: #d90;
     color: #fff;
-    transition: 0.25s;
 }
 
 a.donate-btc:active
 {
     background-color: #b80;
     color: #fff;
-    transition: 0.25s;
 }
