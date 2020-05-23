@@ -75,13 +75,15 @@ nav a
     display: inline-block;
     border-bottom-style: solid;
     border-bottom-width: 0mm;
+    border-bottom-color: #6660;
     padding: 5mm;
-    transition: 1s;
+    transition: 0.25s;
 }
 
 nav a.selected
 {
     border-bottom-width: 1mm;
+    border-bottom-color: #666f;
     padding-bottom: 4mm;
 }
 
@@ -89,15 +91,18 @@ nav a:hover
 {
     background-color: #0001;
     color: #222;
-    transition: 0.25s;
     border-bottom-width: 2mm;
+    border-bottom-color: #222f;
     padding-bottom: 3mm;
 }
 
 nav a:active
 {
-    color: #000;
-    transition: 0.25s;
+    background-color: #0000;
+    color: #666;
+    border-bottom-width: 1mm;
+    border-bottom-color: #666f;
+    padding-bottom: 4mm;
 }
 
 a.button, a.donate-btc
