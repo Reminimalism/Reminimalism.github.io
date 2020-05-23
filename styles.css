@@ -44,12 +44,8 @@ article
 {
     background-color: #fff;
     color: #000;
-    padding: 1cm;
-}
-
-section article
-{
     max-width: 25cm;
+    padding: 1cm;
     margin: auto;
 }
 
@@ -82,6 +78,7 @@ nav a
 
 nav a.selected
 {
+    background-color: #00000004;
     border-bottom-width: 1mm;
     border-bottom-color: #666f;
     padding-bottom: 4mm;
@@ -90,19 +87,16 @@ nav a.selected
 nav a:hover
 {
     background-color: #0001;
-    color: #222;
+    color: #000;
     border-bottom-width: 2mm;
-    border-bottom-color: #222f;
+    border-bottom-color: #000;
     padding-bottom: 3mm;
 }
 
 nav a:active
 {
-    background-color: #0000;
-    color: #666;
-    border-bottom-width: 1mm;
-    border-bottom-color: #666f;
-    padding-bottom: 4mm;
+    border-bottom-width: 1.5mm;
+    padding-bottom: 3.5mm;
 }
 
 a.button, a.donate-btc
