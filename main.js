@@ -1,3 +1,6 @@
+var DEFAULT_TITLE = "Reminimalism";
+var DEFAULT_CONTENT = "";
+
 var nav_home;
 var nav_materialslivewallpaper;
 var nav_donate;
@@ -31,9 +34,7 @@ function load_home()
     nav_donate.removeAttribute("class");
 
     set_content(
-        "/index_content.html",
         "/",
-        "Reminimalism",
         nav_home
     );
 }
@@ -45,9 +46,7 @@ function load_materialslivewallpaper()
     nav_donate.removeAttribute("class");
 
     set_content(
-        "/materialslivewallpaper_content.html",
         "/materialslivewallpaper",
-        "Reminimalism - Materials Live Wallpaper",
         nav_materialslivewallpaper
     );
 }
@@ -59,9 +58,7 @@ function load_donate()
     nav_donate.setAttribute("class", "selected");
 
     set_content(
-        "/donate_content.html",
         "/donate",
-        "Reminimalism - Donate",
         nav_donate
     );
 }
@@ -77,11 +74,11 @@ window.addEventListener('popstate', function(e)
                 nav_items[i].setAttribute("class", "selected");
             else
                 nav_items[i].removeAttribute("class");
-        this.set_content(e.state.content_url, null, null);
+        this.set_content(e.state.page_url, null);
     }
 });
 
-function set_content(content_url, page_url, title, nav_item)
+function set_content(page_url, nav_item)
 {
     var request;
     if (window.XMLHttpRequest)
@@ -91,19 +88,49 @@ function set_content(content_url, page_url, title, nav_item)
 
     request.onreadystatechange=function()
     {
-        if (request.readyState==4 && request.status==200)
+        if (request.readyState == 4 && request.status == 200)
         {
-            if (title != null && page_url != null && nav_item != null)
+            var title = get_title(request.responseText);
+            if (nav_item != null)
             {
                 var data = {};
-                data.content_url = content_url;
+                data.page_url = page_url;
                 data.nav_item_id = nav_item.id;
                 window.history.pushState(data, title, page_url);
             }
-            content.innerHTML = request.responseText;
+            document.title = title;
+            content.innerHTML = get_content(request.responseText);
         }
     }
 
-    request.open("GET", content_url, false );
+    request.open("GET", page_url, false );
     request.send();
+}
+
+function get_title(page_content)
+{
+    var result = get_text_between(page_content, "<title>", "</title>");
+    if (result == null)
+        return DEFAULT_TITLE;
+    return result;
+}
+
+function get_content(page_content)
+{
+    var result = get_text_between(page_content, "<section id=\"content\">", "</section>");
+    if (result == null)
+        return DEFAULT_CONTENT;
+    return result;
+}
+
+function get_text_between(text, prefix, postfix)
+{
+    var start = text.indexOf(prefix);
+    if (start == -1)
+        return null;
+    start += prefix.length;
+    var end = text.indexOf(postfix, start);
+    if (end == -1)
+        return null;
+    return text.substring(start, end);
 }
