@@ -3,6 +3,7 @@ var DEFAULT_CONTENT = "";
 
 var nav_home;
 var nav_materialslivewallpaper;
+var nav_particleslivewallpaper;
 var nav_donate;
 
 var nav_items = [];
@@ -13,16 +14,19 @@ document.addEventListener("DOMContentLoaded", function()
 {
     nav_home = document.getElementById("nav_home");
     nav_materialslivewallpaper = document.getElementById("nav_materialslivewallpaper");
+    nav_particleslivewallpaper = document.getElementById("nav_particleslivewallpaper");
     nav_donate = document.getElementById("nav_donate");
     content = document.getElementById("content");
 
     nav_home.setAttribute("href", "javascript:load_home()");
     nav_materialslivewallpaper.setAttribute("href", "javascript:load_materialslivewallpaper()");
+    nav_particleslivewallpaper.setAttribute("href", "javascript:load_particleslivewallpaper()");
     nav_donate.setAttribute("href", "javascript:load_donate()");
 
     nav_items = [
         nav_home,
         nav_materialslivewallpaper,
+        nav_particleslivewallpaper,
         nav_donate
     ]
 });
@@ -31,6 +35,7 @@ function load_home()
 {
     nav_home.setAttribute("class", "selected");
     nav_materialslivewallpaper.removeAttribute("class");
+    nav_particleslivewallpaper.removeAttribute("class");
     nav_donate.removeAttribute("class");
 
     set_content(
@@ -43,6 +48,7 @@ function load_materialslivewallpaper()
 {
     nav_home.removeAttribute("class");
     nav_materialslivewallpaper.setAttribute("class", "selected");
+    nav_particleslivewallpaper.removeAttribute("class");
     nav_donate.removeAttribute("class");
 
     set_content(
@@ -51,10 +57,24 @@ function load_materialslivewallpaper()
     );
 }
 
+function load_particleslivewallpaper()
+{
+    nav_home.removeAttribute("class");
+    nav_materialslivewallpaper.removeAttribute("class");
+    nav_particleslivewallpaper.setAttribute("class", "selected");
+    nav_donate.removeAttribute("class");
+
+    set_content(
+        "/particleslivewallpaper",
+        nav_particleslivewallpaper
+    );
+}
+
 function load_donate()
 {
     nav_home.removeAttribute("class");
     nav_materialslivewallpaper.removeAttribute("class");
+    nav_particleslivewallpaper.removeAttribute("class");
     nav_donate.setAttribute("class", "selected");
 
     set_content(
